@@ -1,7 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class ShowBilUI extends StatefulWidget {
-  const ShowBilUI({super.key});
+  double? payTotal;
+  File? imgFile;
+
+  ShowBilUI({
+    super.key,
+    this.payTotal,
+    this.imgFile,
+  });
 
   @override
   State<ShowBilUI> createState() => _ShowBilUIState();
@@ -10,6 +19,30 @@ class ShowBilUI extends StatefulWidget {
 class _ShowBilUIState extends State<ShowBilUI> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.deepOrange,
+          title: Text('Show Bill'),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              Text(
+                'Total ${widget.payTotal}',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Image.file(
+                widget.imgFile!,
+                height: 200,
+              )
+            ],
+          ),
+        ));
   }
 }
